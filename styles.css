@@ -1,0 +1,59 @@
+* {
+    font-family: 'Segoe UI', Verdana, sans-serif;
+    box-sizing: border-box;
+}
+
+.wrapper {
+    background-color: #eaeaea;
+    border: 1px solid black;
+    margin: 100px auto;
+    width: 800px;
+    height: 500px;
+    overflow: scroll;
+}
+
+.newTask {
+    gap: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.newTask input {
+    width: 250px;
+    height: 25px;
+    border-radius: 5px;
+    border: none;
+}
+
+::placeholder {
+    padding-left: 7px;
+}
+
+.newTask button {
+    width: 100px;
+    height: 30px;
+    background-color: rgb(16, 179, 16);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+}
+
+.tasks-ul {
+    margin-top: 20px;
+}
+
+li {
+    list-style: none;
+    font-size: 25px;
+    color: rgb(57, 57, 57);
+    margin-right: 20px;
+    width: 350px;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+
+
+
+
