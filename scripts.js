@@ -1,9 +1,14 @@
 const add_btn = document.querySelector('#add-btn');
 const task_input = document.querySelector('#task-input');
 const ul_tasks = document.querySelector('.tasks-ul');
+const filter_tasks = document.querySelector('#filter-tasks');
+const f_all = document.querySelector('#f-all');
+const f_compl = document.querySelector('#f-compl');
+const f_active = document.querySelector('#f-active');
+const filter_ul = document.querySelector('.filters ul');
+const filters_block = document.querySelector('.filters');
 
 let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-
 
 function createTask(task) {
     const div = document.createElement('div');
@@ -70,6 +75,7 @@ function createTask(task) {
         li.style.fontWeight = '400';
         li.style.color = '#000';
         [checkbox, edit_btn, important_btn].forEach((btn) => btn.disabled = true);
+        make_filter();
     }
 
     del_btn.addEventListener('click', () => {
@@ -103,27 +109,68 @@ function createTask(task) {
         li.style.color = '#000';
         [checkbox, edit_btn, important_btn].forEach((btn) => btn.disabled = true);
         localStorage.setItem('tasks', JSON.stringify(tasks));
+        make_filter();
     });
 }
 
+
+let filter = 'all'; 
+
+function make_filter() {
+    [...ul_tasks.children].forEach(item => {
+        const checkbox = item.querySelector('input[type="checkbox"]');
+        if (filter == 'all') item.style.display = 'flex';
+        else if (filter == 'completed') item.style.display = checkbox.checked ? 'flex' : 'none';
+        else if (filter == 'active') item.style.display = !checkbox.checked ? 'flex' : 'none';
+    });
+}
+
+filters_block.addEventListener('mouseenter', () => {
+    filter_ul.style.display = 'flex';
+});
+
+filters_block.addEventListener('mouseleave', () => {
+    setTimeout(() => filter_ul.style.display = 'none', 700)
+});
+
+f_all.addEventListener('click', () => {
+    filter = 'all';
+    make_filter();
+});
+
+f_compl.addEventListener('click', () => { 
+    filter = 'completed'; 
+    make_filter(); 
+});
+
+f_active.addEventListener('click', () => { 
+    filter = 'active'; 
+    make_filter(); 
+});
+
+
 tasks.forEach(task => createTask(task));
+make_filter();
+
 
 add_btn.addEventListener('click', e => {
-    if (task_input.value.trim() === '') {
+    e.preventDefault();
+    if (task_input.value.trim() == '') {
         alert('You did not write task');
         return;
     }
-    e.preventDefault();
-    const task = {
-        txt: task_input.value,
-        important: false,
-        cmplt: false
+
+    const task = { 
+        txt: task_input.value, 
+        important: false, 
+        cmplt: false 
     };
 
     tasks.push(task);
     localStorage.setItem('tasks', JSON.stringify(tasks));
     createTask(task);
     task_input.value = '';
+    make_filter(); 
 });
 
 

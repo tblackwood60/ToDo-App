@@ -8,9 +8,19 @@
 </head>
 <body>
     <div class="wrapper">
-        <div class="newTask">
-            <input id="task-input" type="text" placeholder="Write task">
-            <button id="add-btn">Add</button>
+        <div class="row">
+            <div class="newTask">
+                <input id="task-input" type="text" placeholder="Write task">
+                <button id="add-btn">Add</button>
+            </div>
+            <div class="filters">
+                <p id="filter-tasks">Filters</p>
+                <ul>
+                    <li id="f-all">All</li>
+                    <li id="f-compl">Completed</li>
+                    <li id="f-active">Active</li>
+                </ul>
+            </div>
         </div>
         <div>
             <ul class="tasks-ul"></ul>

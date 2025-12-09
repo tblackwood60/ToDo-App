@@ -15,8 +15,9 @@
 .newTask {
     gap: 20px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    margin-left: 40px;
     margin-top: 30px;
 }
 
@@ -41,7 +42,7 @@
 }
 
 .tasks-ul {
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 li {
@@ -54,6 +55,41 @@ li {
     overflow: hidden;
 }
 
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+}
 
+.filters {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-right: 50px;
+}
+
+.filters ul {
+    margin-top: -70px;
+    margin-left: -20px;
+    display: none;
+    flex-direction: column;
+}
+
+.filters ul li {
+    font-size: 15px;
+    font-weight: 600;
+    color: rgb(47, 47, 47);
+    border: 1px solid black;
+    width: 100px;
+    padding-left: 5px;
+}
+
+.filters p {
+    font-size: 25px;
+    font-weight: 600;
+    color: rgb(42, 41, 40);
+    margin-left: -70px;
+}
 
 
